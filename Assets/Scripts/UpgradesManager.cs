@@ -39,7 +39,7 @@ public class UpgradesManager : MonoBehaviour
         autoClickUpgradeBaseCost = 1000;
         autoClickUpgradeMult = 1.3;
         autoClickUpgradeProductionBase = 100;
-        autoClickUpgradeProductionMult = 1.3;
+        autoClickUpgradeProductionMult = 1.2;
         autoClickUpgradeSpeedBase = 1f;
         UpdateUpgradeUI();
     }
@@ -61,7 +61,7 @@ public class UpgradesManager : MonoBehaviour
         double production = 0;
         if (data.autoClickUpgradeLevel > 0)
         {
-            production = autoClickUpgradeProductionBase * (data.clickUpgradeLevel / 10) * Math.Pow(autoClickUpgradeProductionMult, data.autoClickUpgradeLevel);           
+            production = autoClickUpgradeProductionBase * (data.clickUpgradeLevel / 100) * Math.Pow(autoClickUpgradeProductionMult, data.autoClickUpgradeLevel);           
         }
 
         return production;
@@ -77,6 +77,10 @@ public class UpgradesManager : MonoBehaviour
             interval = speed / 2;
         }
         else if (data.autoClickUpgradeLevel >= 200)
+        {
+            interval = speed / 3;
+        }
+        else if (data.autoClickUpgradeLevel >= 500)
         {
             interval = speed / 5;
         }
