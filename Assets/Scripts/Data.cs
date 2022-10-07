@@ -7,6 +7,7 @@ public class Data
 
     public double clickUpgradeLevel;
     public double autoClickUpgradeLevel;
+    public double clickFarmUpgradeLevel;
 
     public Data()
     {
@@ -14,5 +15,6 @@ public class Data
 
         clickUpgradeLevel = 0;
         autoClickUpgradeLevel = 0;
+        clickFarmUpgradeLevel = 0;
     }
 }

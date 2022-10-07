@@ -22,6 +22,7 @@ public class Controller : MonoBehaviour
         upgradesManager.UpgradeManagerStart();
 
         StartCoroutine(AutoClickUpdate());
+        StartCoroutine(ClickFarmUpdate());
     }
 
     IEnumerator AutoClickUpdate()
@@ -31,24 +32,46 @@ public class Controller : MonoBehaviour
 
         while (true)
         {
-            data.balance += upgradesManager.AutoClickProductionFormula();
+            AddBalance(upgradesManager.AutoClickProductionFormula());
 
             yield return new WaitForSeconds(speed);
         }            
+    }
+
+    IEnumerator ClickFarmUpdate()
+    {
+        float speed = upgradesManager.CalcClickFarmSpeed();
+        float clickFarmUpgradeCurrentSpeed = upgradesManager.CalcClickFarmSpeed();
+
+        while (true)
+        {
+            AddBalance(upgradesManager.ClickFarmProductionFormula());
+
+            yield return new WaitForSeconds(speed);
+        }   
     }
 
     public void Update()
     {
         balanceText.text = CashFormat(data.balance) + "  E-Girls";
         balanceText2.text = CashFormat(data.balance) + " E-Girls";
-        gainPerSecond.text = "Automation: " + CashFormat(Math.Round(CalcGainPerSecond(), 1)) + " /s";
-        gainPerSecond2.text = "Automation: " + CashFormat(Math.Round(CalcGainPerSecond(), 1)) + " /s";
+        gainPerSecond.text = "Automation: " + CashFormat(Round(CalcGainPerSecond())) + " /s";
+        gainPerSecond2.text = "Automation: " + CashFormat(Round(CalcGainPerSecond())) + " /s";
+    }
+
+    private double Round(double input)
+    {
+        if (input !> 999)
+        {
+            return Math.Round(input);
+        }
+        else
+        {
+            return Math.Round(input, 1);
+        }
     }    
 
-    public double CalcGainPerSecond()
-    {
-        return upgradesManager.AutoClickProductionFormula();
-    }
+    public double CalcGainPerSecond() { return upgradesManager.AutoClickProductionFormula() + upgradesManager.ClickFarmProductionFormula(); }
 
     public string CashFormat(double balance)
     {
@@ -67,12 +90,12 @@ public class Controller : MonoBehaviour
         return result;
     }
 
-    private void AddBalance(double amount)
+    public void AddBalance(double amount)
     {
         data.balance += amount;
     }
 
-    private void SubtractBalance(double amount)
+    public void SubtractBalance(double amount)
     {
         data.balance -= amount;
     }
