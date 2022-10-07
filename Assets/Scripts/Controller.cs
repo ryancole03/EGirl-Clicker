@@ -71,7 +71,7 @@ public class Controller : MonoBehaviour
         }
     }    
 
-    public double CalcGainPerSecond() { return upgradesManager.AutoClickProductionFormula() + upgradesManager.ClickFarmProductionFormula(); }
+    public double CalcGainPerSecond() { return upgradesManager.AutoClickProductionFormula() + (upgradesManager.ClickFarmProductionFormula() / upgradesManager.CalcClickFarmSpeed()); }
 
     public string CashFormat(double balance)
     {

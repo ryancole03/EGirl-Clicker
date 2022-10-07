@@ -43,17 +43,17 @@ public class UpgradesManager : MonoBehaviour
         clickUpgradeBaseCost = 100;
         clickUpgradeCostMult = 1.13;
 
-        autoClickUpgradeBaseCost = 10000;
-        autoClickUpgradeMult = 1.3;
+        autoClickUpgradeBaseCost = 1000;
+        autoClickUpgradeMult = 1.15;
         autoClickUpgradeProductionBase = 100;
-        autoClickUpgradeProductionMult = 1.15;
+        autoClickUpgradeProductionMult = 1.3;
         autoClickUpgradeSpeedBase = 1f;
 
         clickFarmUpgradeBaseCost = 100000;
-        clickFarmUpgradeMult = 1.3;
-        clickFarmUpgradeProductionBase = 1000;
-        clickFarmUpgradeProductionMult = 1.16;
-        clickFarmUpgradeSpeedBase = 3f;
+        clickFarmUpgradeMult = 1.17;
+        clickFarmUpgradeProductionBase = 10000;
+        clickFarmUpgradeProductionMult = 1.3;
+        clickFarmUpgradeSpeedBase = 2f;
         UpdateUpgradeUI();
     }
 
