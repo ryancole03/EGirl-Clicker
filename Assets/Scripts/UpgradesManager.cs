@@ -61,7 +61,7 @@ public class UpgradesManager : MonoBehaviour
         double production = 0;
         if (data.autoClickUpgradeLevel > 0)
         {
-            production = autoClickUpgradeProductionBase * (data.clickUpgradeLevel / 100) * Math.Pow(autoClickUpgradeProductionMult, data.autoClickUpgradeLevel);           
+            production = autoClickUpgradeProductionBase * (1 + data.clickUpgradeLevel / 100) * Math.Pow(autoClickUpgradeProductionMult, data.autoClickUpgradeLevel);           
         }
 
         return production;

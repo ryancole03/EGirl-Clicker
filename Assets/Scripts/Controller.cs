@@ -10,8 +10,9 @@ public class Controller : MonoBehaviour
     public Data data;
 
     [SerializeField] private Text balanceText;
+    [SerializeField] private Text balanceText2;
     [SerializeField] private Text gainPerSecond;
-
+    [SerializeField] private Text gainPerSecond2;
     public double clickPower() { return 1 + data.clickUpgradeLevel; }
 
     public void Start()
@@ -39,7 +40,9 @@ public class Controller : MonoBehaviour
     public void Update()
     {
         balanceText.text = CashFormat(data.balance) + "  E-Girls";
+        balanceText2.text = CashFormat(data.balance) + " E-Girls";
         gainPerSecond.text = "Automation: " + CashFormat(Math.Round(CalcGainPerSecond(), 1)) + " /s";
+        gainPerSecond2.text = "Automation: " + CashFormat(Math.Round(CalcGainPerSecond(), 1)) + " /s";
     }    
 
     public double CalcGainPerSecond()
